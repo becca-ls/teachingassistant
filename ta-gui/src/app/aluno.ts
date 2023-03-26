@@ -3,7 +3,7 @@ export class Aluno {
   cpf: string="";
   email: string="";
   GitHub: string="";
-  metas: Map<string,string>;
+  metas: Map<string,string> = new Map<string,string>();
 
   constructor() {
     this.clean();
@@ -28,7 +28,8 @@ export class Aluno {
   cloneMetas(): Map<string,string> {
     var metas: Map<string,string> = new Map<string,string>();
     for (let key in this.metas) {
-      metas[key] = this.metas[key];
+      const value = this.metas.get(key)
+      if(value !== undefined) metas.set(key, value)      
     }
     return metas;
   }
